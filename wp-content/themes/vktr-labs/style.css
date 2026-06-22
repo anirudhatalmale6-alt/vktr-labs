@@ -1034,6 +1034,92 @@ h4 { font-size: 1.3rem; }
 /* ===== WOOCOMMERCE NOTICES ===== */
 .woocommerce-notices-wrapper { margin-top: var(--header-height); }
 
+/* ===== COMING SOON ===== */
+.coming-soon-badge {
+    background: var(--sand) !important;
+    color: var(--charcoal) !important;
+}
+
+.coming-soon-text {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sand-dark);
+    font-weight: 500;
+}
+
+.woocommerce ul.products li.product .coming-soon-text {
+    display: block;
+    padding: 0 16px 12px;
+}
+
+/* B3G1 promo banner */
+.promo-banner {
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+    text-align: center;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(196, 181, 160, 0.15);
+}
+
+.promo-banner p {
+    color: var(--sand);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.promo-banner strong {
+    color: var(--ivory);
+}
+
+/* ===== WHY CHOOSE SECTION ===== */
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+
+.why-choose-item {
+    padding: 32px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+}
+
+.why-choose-item:hover {
+    border-color: var(--sand);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.why-choose-item .wci-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 16px;
+    color: var(--sand-dark);
+}
+
+.why-choose-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+.why-choose-item p {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .why-choose-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+@media (max-width: 480px) {
+    .why-choose-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== WHATSAPP FLOAT ===== */
 .whatsapp-float {
     position: fixed;

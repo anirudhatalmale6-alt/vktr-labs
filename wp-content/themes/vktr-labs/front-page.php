@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<div class="promo-banner">
+    <p><strong>Buy 3, Get 1 Free</strong> &mdash; Cheapest product free, applied automatically at checkout</p>
+</div>
+
 <section class="hero">
     <div class="hero-content">
         <div class="hero-logo">
@@ -9,8 +13,8 @@
         <p class="hero-tagline">Elevate Through Evidence</p>
 
         <p class="hero-description">
-            Premium research compounds crafted to the highest standards.
-            Every product is rigorously tested and quality assured for your research needs.
+            Premium research compounds sourced from trusted manufacturing partners.
+            Quality, consistency and transparency &mdash; backed by evidence, not hype.
         </p>
 
         <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn btn-primary">Explore Products</a>
@@ -32,14 +36,14 @@
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
                 <h4>Quality Assured</h4>
-                <p>Rigorous testing on every product</p>
+                <p>Third-party tested with documentation available</p>
             </div>
             <div class="feature-item">
                 <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
                 </svg>
-                <h4>Research Grade</h4>
-                <p>Premium compounds for research purposes</p>
+                <h4>Buy 3, Get 1 Free</h4>
+                <p>Cheapest product free, applied automatically</p>
             </div>
         </div>
     </div>
@@ -75,15 +79,24 @@ if (!empty($featured_products)):
                         } else {
                             echo '<div class="product-placeholder">VKTR Labs</div>';
                         }
+                        $price = (float) $product->get_price();
+                        if ($price === 0.0) {
+                            echo '<span class="product-card-badge coming-soon-badge">Coming Soon</span>';
+                        }
                         ?>
                     </div>
                     <div class="product-card-info">
                         <h3><?php echo esc_html($product->get_name()); ?></h3>
                         <p class="product-subtitle"><?php echo wp_trim_words($product->get_short_description(), 10); ?></p>
-                        <div class="product-card-price">
-                            <span class="currency">$</span><?php echo esc_html($product->get_price()); ?>
-                        </div>
-                        <span class="btn btn-dark">View Product</span>
+                        <?php if ($price > 0): ?>
+                            <div class="product-card-price">
+                                <span class="currency">$</span><?php echo esc_html($product->get_price()); ?>
+                            </div>
+                            <span class="btn btn-dark">View Product</span>
+                        <?php else: ?>
+                            <div class="product-card-price coming-soon-text">Coming Soon</div>
+                            <span class="btn btn-dark">View Details</span>
+                        <?php endif; ?>
                     </div>
                 </a>
             <?php endforeach; ?>
@@ -96,25 +109,68 @@ if (!empty($featured_products)):
 </section>
 <?php endif; ?>
 
+<section class="section" style="background:var(--ivory-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+        <div class="section-header" style="margin-bottom:48px;">
+            <p class="section-subtitle">The VKTR Difference</p>
+            <h2>Why Choose VKTR Labs</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="why-choose-grid">
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <h4>Premium Research Compounds</h4>
+                <p>Sourced from trusted manufacturing partners and presented to the highest standard.</p>
+            </div>
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <h4>High Purity Standards</h4>
+                <p>99%+ purity where applicable, verified through independent testing processes.</p>
+            </div>
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <h4>Quality Focused</h4>
+                <p>Every product meets rigorous quality standards with consistency across every batch.</p>
+            </div>
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <h4>Transparent Approach</h4>
+                <p>Clear product information and documentation available from manufacturing partners.</p>
+            </div>
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                <h4>Australia-Wide Express</h4>
+                <p>Free express shipping on every order across Australia. $16.95 flat rate to NZ.</p>
+            </div>
+            <div class="why-choose-item fade-in">
+                <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                <h4>Reliable Customer Support</h4>
+                <p>Responsive, professional service focused on building long-term trust.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="ethos-section">
     <div class="container">
         <div class="section-header" style="margin-bottom:56px;">
-            <p class="section-subtitle" style="color:var(--sand);">Why VKTR Labs</p>
-            <h2 style="color:var(--ivory);">The Standard of Excellence</h2>
+            <p class="section-subtitle" style="color:var(--sand);">Our Philosophy</p>
+            <h2 style="color:var(--ivory);">Elevate Through Evidence</h2>
             <div class="section-divider"></div>
+            <p style="color:var(--sand-light);opacity:0.7;max-width:600px;margin:16px auto 0;">Quality should be supported by standards, consistency and evidence &mdash; not hype or marketing claims.</p>
         </div>
         <div class="ethos-grid">
             <div class="ethos-item fade-in">
-                <h4>Purity</h4>
-                <p>Every batch is tested to ensure the highest purity standards, giving you confidence in your research outcomes.</p>
+                <h4>Quality</h4>
+                <p>Every product is held to the highest standard. We partner with trusted manufacturers to deliver consistent, premium-grade compounds.</p>
             </div>
             <div class="ethos-item fade-in">
-                <h4>Precision</h4>
-                <p>Exact formulations, accurate dosing, and consistent quality across our entire product range.</p>
+                <h4>Transparency</h4>
+                <p>Clear information, honest documentation, and no exaggerated claims. What you see is what you get.</p>
             </div>
             <div class="ethos-item fade-in">
                 <h4>Trust</h4>
-                <p>Built on transparency and backed by evidence. We stand behind the quality of every product we offer.</p>
+                <p>Built on reliability and long-term relationships. We earn trust through consistent quality and professional service.</p>
             </div>
         </div>
     </div>

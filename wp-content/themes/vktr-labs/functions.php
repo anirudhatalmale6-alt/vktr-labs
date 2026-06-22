@@ -158,3 +158,78 @@ function vktr_excerpt_length($length) {
     return 20;
 }
 add_filter('excerpt_length', 'vktr_excerpt_length');
+
+// Buy 3 Get 1 Free - automatically discount cheapest item when 4+ in cart
+function vktr_buy3_get1_free($cart) {
+    if (is_admin() && !defined('DOING_AJAX')) return;
+    if (did_action('woocommerce_before_calculate_totals') >= 2) return;
+
+    $items = $cart->get_cart();
+    $count = count($items);
+
+    // Reset any previous discount
+    foreach ($items as $key => $item) {
+        if (isset($item['vktr_b3g1_discount'])) {
+            unset($cart->cart_contents[$key]['vktr_b3g1_discount']);
+        }
+    }
+
+    if ($count < 4) return;
+
+    // Find how many free items (1 free per 4 items)
+    $free_count = floor($count / 4);
+
+    // Collect all prices and sort ascending
+    $price_map = [];
+    foreach ($items as $key => $item) {
+        $price_map[$key] = (float) $item['data']->get_price();
+    }
+    asort($price_map);
+
+    // Discount the cheapest N items
+    $discounted = 0;
+    foreach ($price_map as $key => $price) {
+        if ($discounted >= $free_count) break;
+        if ($price > 0) {
+            $cart->cart_contents[$key]['vktr_b3g1_discount'] = true;
+            $cart->cart_contents[$key]['data']->set_price(0);
+            $discounted++;
+        }
+    }
+}
+add_action('woocommerce_before_calculate_totals', 'vktr_buy3_get1_free', 20);
+
+function vktr_b3g1_cart_item_name($name, $cart_item, $cart_item_key) {
+    if (!empty($cart_item['vktr_b3g1_discount'])) {
+        $name .= ' <span style="color:var(--success,#27ae60);font-size:0.8em;font-weight:600;"> &mdash; FREE (Buy 3 Get 1 Free)</span>';
+    }
+    return $name;
+}
+add_filter('woocommerce_cart_item_name', 'vktr_b3g1_cart_item_name', 10, 3);
+
+// Coming Soon badge for products with $0 price
+function vktr_coming_soon_badge() {
+    global $product;
+    if ($product && (float) $product->get_price() === 0.0) {
+        echo '<span class="product-card-badge coming-soon-badge">Coming Soon</span>';
+    }
+}
+add_action('woocommerce_before_shop_loop_item_title', 'vktr_coming_soon_badge', 15);
+
+// Hide Add to Cart for Coming Soon ($0) products
+function vktr_hide_add_to_cart_for_coming_soon($purchasable, $product) {
+    if ((float) $product->get_price() === 0.0) {
+        return false;
+    }
+    return $purchasable;
+}
+add_filter('woocommerce_is_purchasable', 'vktr_hide_add_to_cart_for_coming_soon', 10, 2);
+
+// Show "Coming Soon" instead of price for $0 products
+function vktr_coming_soon_price_html($price, $product) {
+    if ((float) $product->get_price() === 0.0) {
+        return '<span class="coming-soon-text">Coming Soon</span>';
+    }
+    return $price;
+}
+add_filter('woocommerce_get_price_html', 'vktr_coming_soon_price_html', 10, 2);
