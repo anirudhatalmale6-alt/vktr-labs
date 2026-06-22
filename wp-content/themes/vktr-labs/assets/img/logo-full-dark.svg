@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <!-- Full logo: VKTR + LABS + tagline, charcoal on transparent for light backgrounds -->
+
+  <!-- VKTR main text -->
+  <text x="200" y="85" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, Times New Roman, serif"
+        font-size="72" font-weight="600" letter-spacing="0.12em"
+        fill="#2c2c2c">VKTR</text>
+
+  <!-- Horizontal rules flanking LABS -->
+  <line x1="95" y1="112" x2="155" y2="112" stroke="#2c2c2c" stroke-width="0.8"/>
+  <line x1="245" y1="112" x2="305" y2="112" stroke="#2c2c2c" stroke-width="0.8"/>
+
+  <!-- LABS text -->
+  <text x="200" y="118" text-anchor="middle"
+        font-family="Cormorant Garamond, Georgia, Times New Roman, serif"
+        font-size="24" font-weight="400" letter-spacing="0.35em"
+        fill="#2c2c2c">LABS</text>
+
+  <!-- Tagline -->
+  <text x="200" y="155" text-anchor="middle"
+        font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="10" font-weight="300" letter-spacing="0.25em"
+        fill="#2c2c2c" text-transform="uppercase">ELEVATE THROUGH EVIDENCE</text>
+</svg>

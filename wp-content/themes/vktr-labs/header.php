@@ -21,6 +21,7 @@
         <nav class="main-nav" id="main-nav">
             <a href="<?php echo esc_url(home_url('/')); ?>" <?php if (is_front_page()) echo 'class="active"'; ?>>Home</a>
             <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" <?php if (is_shop() || is_product()) echo 'class="active"'; ?>>Shop</a>
+            <a href="<?php echo esc_url(home_url('/about/')); ?>" <?php if (is_page('about')) echo 'class="active"'; ?>>About</a>
             <a href="<?php echo esc_url(home_url('/faq/')); ?>" <?php if (is_page('faq')) echo 'class="active"'; ?>>FAQ</a>
             <a href="<?php echo esc_url(home_url('/contact/')); ?>" <?php if (is_page('contact')) echo 'class="active"'; ?>>Contact</a>
         </nav>
@@ -44,5 +45,5 @@
 </header>
 
 <div class="disclaimer-banner">
-    Research Use Only &mdash; Not for Human Consumption
+    All Products Are Sold Strictly for Research Purposes Only
 </div>

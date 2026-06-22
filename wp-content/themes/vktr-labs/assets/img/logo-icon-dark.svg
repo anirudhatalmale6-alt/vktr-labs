@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Icon mark: Elegant "V" lettermark, charcoal on transparent -->
+
+  <defs>
+    <style>
+      .v-mark { font-family: Cormorant Garamond, Georgia, Times New Roman, serif; }
+    </style>
+  </defs>
+
+  <!-- Main V letterform -->
+  <text x="60" y="88" text-anchor="middle"
+        class="v-mark"
+        font-size="96" font-weight="600"
+        fill="#2c2c2c">V</text>
+
+  <!-- Subtle thin underline accent -->
+  <line x1="30" y1="100" x2="90" y2="100" stroke="#2c2c2c" stroke-width="0.6"/>
+</svg>

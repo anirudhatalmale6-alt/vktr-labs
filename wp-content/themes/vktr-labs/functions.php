@@ -43,29 +43,43 @@ add_action('woocommerce_after_main_content', 'vktr_wc_wrapper_end', 10);
 function vktr_add_research_disclaimer_to_product() {
     echo '<div class="research-disclaimer-box">';
     echo '<strong>Research Use Only</strong>';
-    echo 'This product is sold for research purposes only and is not intended for human consumption. ';
-    echo 'By purchasing this product, you acknowledge that you do so at your own risk.';
+    echo 'This product is sold strictly for research purposes only. ';
+    echo 'By purchasing, you accept full responsibility for the use of this product and confirm that you understand all applicable local laws and regulations.';
     echo '</div>';
 }
 add_action('woocommerce_single_product_summary', 'vktr_add_research_disclaimer_to_product', 25);
 
-function vktr_checkout_disclaimer_fields($checkout) {
+function vktr_checkout_disclaimer_fields() {
     echo '<div class="checkout-disclaimer" id="vktr-research-disclaimer">';
     echo '<h3 style="font-size:1rem;margin-bottom:16px;font-family:var(--font-heading);">Required Acknowledgements</h3>';
 
     woocommerce_form_field('research_acknowledgement', [
         'type'     => 'checkbox',
         'class'    => ['form-row-wide'],
-        'label'    => 'I acknowledge that all products sold by VKTR Labs are for research purposes only, are not for human consumption, and that I purchase and use these products at my own risk.',
+        'label'    => 'I acknowledge that all products sold by VKTR Labs are for research purposes only.',
         'required' => true,
-    ], $checkout->get_value('research_acknowledgement'));
+    ]);
 
-    woocommerce_form_field('customs_acknowledgement', [
+    woocommerce_form_field('responsibility_acknowledgement', [
         'type'     => 'checkbox',
         'class'    => ['form-row-wide'],
-        'label'    => 'I acknowledge that if my order is seized, delayed, confiscated, or rejected by customs, it will not be refunded or resent and remains my responsibility as the buyer.',
+        'label'    => 'I accept full responsibility for the use of all products after purchase.',
         'required' => true,
-    ], $checkout->get_value('customs_acknowledgement'));
+    ]);
+
+    woocommerce_form_field('laws_acknowledgement', [
+        'type'     => 'checkbox',
+        'class'    => ['form-row-wide'],
+        'label'    => 'I am responsible for understanding and complying with all local laws and regulations regarding the products I am purchasing.',
+        'required' => true,
+    ]);
+
+    woocommerce_form_field('shipping_acknowledgement', [
+        'type'     => 'checkbox',
+        'class'    => ['form-row-wide'],
+        'label'    => 'I understand that all orders are shipped at the buyer\'s risk. If a package is delayed, held, or seized by customs, it will not be resent or refunded.',
+        'required' => true,
+    ]);
 
     echo '</div>';
 }
@@ -73,33 +87,41 @@ add_action('woocommerce_review_order_before_payment', 'vktr_checkout_disclaimer_
 
 function vktr_validate_disclaimer_fields() {
     if (empty($_POST['research_acknowledgement'])) {
-        wc_add_notice('You must acknowledge that products are for research purposes only before placing your order.', 'error');
+        wc_add_notice('You must acknowledge that products are for research purposes only.', 'error');
     }
-    if (empty($_POST['customs_acknowledgement'])) {
-        wc_add_notice('You must acknowledge the customs responsibility disclaimer before placing your order.', 'error');
+    if (empty($_POST['responsibility_acknowledgement'])) {
+        wc_add_notice('You must accept responsibility for product use after purchase.', 'error');
+    }
+    if (empty($_POST['laws_acknowledgement'])) {
+        wc_add_notice('You must acknowledge your responsibility regarding local laws and regulations.', 'error');
+    }
+    if (empty($_POST['shipping_acknowledgement'])) {
+        wc_add_notice('You must acknowledge the shipping and customs risk disclaimer.', 'error');
     }
 }
 add_action('woocommerce_checkout_process', 'vktr_validate_disclaimer_fields');
 
 function vktr_save_disclaimer_fields($order_id) {
-    if (!empty($_POST['research_acknowledgement'])) {
-        update_post_meta($order_id, '_research_acknowledgement', 'yes');
-    }
-    if (!empty($_POST['customs_acknowledgement'])) {
-        update_post_meta($order_id, '_customs_acknowledgement', 'yes');
+    $fields = ['research_acknowledgement', 'responsibility_acknowledgement', 'laws_acknowledgement', 'shipping_acknowledgement'];
+    foreach ($fields as $field) {
+        if (!empty($_POST[$field])) {
+            update_post_meta($order_id, '_' . $field, 'yes');
+        }
     }
 }
 add_action('woocommerce_checkout_update_order_meta', 'vktr_save_disclaimer_fields');
 
 function vktr_display_disclaimer_on_order($order) {
-    $research = get_post_meta($order->get_id(), '_research_acknowledgement', true);
-    $customs = get_post_meta($order->get_id(), '_customs_acknowledgement', true);
-
-    if ($research === 'yes') {
-        echo '<p><strong>Research Disclaimer:</strong> Acknowledged</p>';
-    }
-    if ($customs === 'yes') {
-        echo '<p><strong>Customs Disclaimer:</strong> Acknowledged</p>';
+    $labels = [
+        '_research_acknowledgement'      => 'Research Use Only',
+        '_responsibility_acknowledgement' => 'Buyer Responsibility',
+        '_laws_acknowledgement'           => 'Local Laws',
+        '_shipping_acknowledgement'       => 'Shipping & Customs Risk',
+    ];
+    foreach ($labels as $key => $label) {
+        if (get_post_meta($order->get_id(), $key, true) === 'yes') {
+            echo '<p><strong>' . esc_html($label) . ':</strong> Acknowledged</p>';
+        }
     }
 }
 add_action('woocommerce_admin_order_data_after_billing_address', 'vktr_display_disclaimer_on_order');

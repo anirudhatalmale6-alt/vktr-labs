@@ -3,21 +3,7 @@
 <section class="hero">
     <div class="hero-content">
         <div class="hero-logo">
-            <?php
-            $logo_path = get_template_directory() . '/assets/img/logo.png';
-            if (file_exists($logo_path)):
-            ?>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="VKTR Labs">
-            <?php else: ?>
-                <div style="text-align:center;">
-                    <div style="font-family:var(--font-heading);font-size:4.5rem;letter-spacing:0.12em;color:var(--sand);font-weight:300;">VKTR</div>
-                    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:-4px;">
-                        <span style="flex:1;height:1px;background:var(--sand);opacity:0.4;"></span>
-                        <span style="font-family:var(--font-body);font-size:0.85rem;letter-spacing:0.35em;color:var(--sand);opacity:0.6;">LABS</span>
-                        <span style="flex:1;height:1px;background:var(--sand);opacity:0.4;"></span>
-                    </div>
-                </div>
-            <?php endif; ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-full-light.svg" alt="VKTR Labs" style="width:100%;">
         </div>
 
         <p class="hero-tagline">Elevate Through Evidence</p>
