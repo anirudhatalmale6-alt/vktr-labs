@@ -130,6 +130,8 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
 add_filter('woocommerce_show_page_title', '__return_false');
 
+add_filter('loop_shop_columns', function() { return 3; });
+
 function vktr_excerpt_length($length) {
     return 20;
 }
