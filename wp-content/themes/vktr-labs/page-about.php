@@ -16,20 +16,23 @@ get_header();
         <div style="max-width:780px;margin:0 auto;">
             <h2 style="margin-bottom:20px;">Why VKTR Labs Exists</h2>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:24px;">
-                VKTR Labs exists to provide researchers with access to premium research compounds sourced from trusted manufacturing partners, presented in a professional way with clear information, reliable service and high standards.
+                VKTR Labs was created with a simple belief: researchers should have access to premium-quality compounds presented with transparency, consistency and professionalism.
             </p>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:24px;">
-                VKTR Labs is not trying to be the biggest or loudest brand in the industry. The goal is to create a premium, professional research brand built around quality, consistency, transparency and trust. We believe that researchers deserve better than marketing hype &mdash; they deserve products that are backed by standards, documentation and evidence.
+                In an industry where information can be unclear and standards can vary significantly, we wanted to build a brand that focuses on what matters most &mdash; quality, reliability and trust.
             </p>
 
             <div class="section-divider" style="margin:48px auto;"></div>
 
             <h2 style="margin-bottom:20px;">Elevate Through Evidence</h2>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:24px;">
-                &ldquo;Elevate Through Evidence&rdquo; is the principle behind everything we do. It means that quality should be supported by standards, consistency and evidence rather than hype or marketing claims.
+                &ldquo;Elevate Through Evidence&rdquo; is more than a tagline. It reflects our belief that confidence should come from facts, consistency and proven standards rather than marketing hype. Every decision we make is guided by the principle that quality should be demonstrated, not simply claimed.
             </p>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:24px;">
-                Every product we offer is selected with care, sourced from trusted manufacturing partners, and presented with clear, honest information. We do not make exaggerated claims or rely on marketing to sell our products. Instead, we let quality, documentation and consistency speak for themselves.
+                Our goal is to provide a straightforward, professional experience backed by exceptional service, clear communication and an unwavering commitment to quality.
+            </p>
+            <p style="color:var(--text-medium);line-height:1.9;margin-bottom:24px;">
+                VKTR Labs exists to raise the standard and provide a trusted destination for those who value quality, consistency and evidence above all else.
             </p>
         </div>
     </div>
@@ -45,11 +48,11 @@ get_header();
         <div class="ethos-grid">
             <div class="ethos-item fade-in">
                 <h4>Premium Research Compounds</h4>
-                <p>We source only the highest quality research compounds from trusted manufacturing partners, carefully selected for purity, potency and consistency.</p>
+                <p>We offer only the highest quality research compounds, carefully selected for purity, potency and consistency across every batch.</p>
             </div>
             <div class="ethos-item fade-in">
                 <h4>Third-Party Tested</h4>
-                <p>Products are third-party tested where applicable, with Certificates of Analysis (COAs) available from manufacturing partners to verify quality and composition.</p>
+                <p>Products are third-party tested where applicable, with Certificates of Analysis (COAs) available to verify quality and composition.</p>
             </div>
             <div class="ethos-item fade-in">
                 <h4>High Purity Standards</h4>
@@ -72,7 +75,7 @@ get_header();
                 <div class="fade-in">
                     <h3 style="margin-bottom:12px;font-size:1.4rem;">Transparency</h3>
                     <p style="color:var(--text-medium);line-height:1.8;font-size:0.95rem;">
-                        We believe in full transparency. From clear product descriptions to documentation available from our manufacturing partners, we provide the information you need to make confident purchasing decisions.
+                        We believe in full transparency. From clear product descriptions to accessible documentation, we provide the information you need to make confident purchasing decisions.
                     </p>
                 </div>
             </div>

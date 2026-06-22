@@ -13,8 +13,8 @@
         <p class="hero-tagline">Elevate Through Evidence</p>
 
         <p class="hero-description">
-            Premium research compounds sourced from trusted manufacturing partners.
-            Quality, consistency and transparency &mdash; backed by evidence, not hype.
+            Premium research compounds presented with transparency, consistency and professionalism.
+            Quality backed by evidence, not hype.
         </p>
 
         <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn btn-primary">Explore Products</a>
@@ -120,7 +120,7 @@ if (!empty($featured_products)):
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                 <h4>Premium Research Compounds</h4>
-                <p>Sourced from trusted manufacturing partners and presented to the highest standard.</p>
+                <p>Carefully selected for purity, potency and consistency, presented to the highest standard.</p>
             </div>
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -135,7 +135,7 @@ if (!empty($featured_products)):
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 <h4>Transparent Approach</h4>
-                <p>Clear product information and documentation available from manufacturing partners.</p>
+                <p>Clear product information and honest documentation. What you see is what you get.</p>
             </div>
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
