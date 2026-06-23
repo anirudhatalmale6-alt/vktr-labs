@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="promo-banner">
-    <p><strong>Buy 3, Get 1 Free</strong> &mdash; Cheapest product free, applied automatically at checkout</p>
+    <p><strong>Buy 3, Get 1 Free</strong> &mdash; Applied automatically at checkout</p>
 </div>
 
 <section class="hero">
@@ -29,7 +29,7 @@
                     <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
                 </svg>
                 <h4>Free Express Shipping</h4>
-                <p>Complimentary express delivery Australia-wide</p>
+                <p>Free express delivery Australia-wide on orders over $100</p>
             </div>
             <div class="feature-item">
                 <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -43,7 +43,7 @@
                     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
                 </svg>
                 <h4>Buy 3, Get 1 Free</h4>
-                <p>Cheapest product free, applied automatically</p>
+                <p>Order 3 or more and save automatically</p>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@ if (!empty($featured_products)):
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 <h4>Australia-Wide Express</h4>
-                <p>Free express shipping on every order across Australia. $16.95 flat rate to NZ.</p>
+                <p>Free express shipping on orders over $100 across Australia. $16.95 flat rate to NZ.</p>
             </div>
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>

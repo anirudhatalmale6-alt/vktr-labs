@@ -1,0 +1,139 @@
+[22-Jun-2026 13:05:38 UTC] WordPress database error <div style="clear:both">&nbsp;</div><div class="queries" style="clear:both; margin_bottom:2px; border: red dotted thin;">Queries made or created this session were<br/>
+	<ol>
+		<li>Raw query:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:05:38' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2026-06-22 13:05:38', last_attempt_local='2026-06-22 13:05:38'</li>
+		<li>Rewritten:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:05:38' AND status='pending'</li>
+		<li>With Placeholders:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+		<li>Prepare:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+	</ol>
+</div><div style="clear:both; margin_bottom:2px; border: red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">Error occurred at line 1652 in Function prepare_query. <br/> Error message was: Problem preparing the PDO SQL Statement.  Error was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error </div><pre>#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/db.php(2754): WP_SQLite_DB\PDOEngine->get_error_message()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB\wpsqlitedb->query('...')
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions('...', 25, NULL, '', '')
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, '...')
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('...')
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array('...', Array)
+</pre> for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:05:38' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2026-06-22 13:05:38', last_attempt_local='2026-06-22 13:05:38' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB\wpsqlitedb->query, WP_SQLite_DB\wpsqlitedb->print_error
+[22-Jun-2026 13:05:38 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div><div class="queries" style="clear:both; margin_bottom:2px; border: red dotted thin;">Queries made or created this session were<br/>
+	<ol>
+		<li>Raw query:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:05:38' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2026-06-22 13:05:38', last_attempt_local='2026-06-22 13:05:38'</li>
+		<li>Rewritten:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:05:38' AND status='pending'</li>
+		<li>With Placeholders:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+		<li>Prepare:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+	</ol>
+</div><div style="clear:both; margin_bottom:2px; border: red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">Error occurred at line 1652 in Function prepare_query. <br/> Error message was: Problem preparing the PDO SQL Statement.  Error was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error </div><pre>#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/db.php(2754): WP_SQLite_DB\PDOEngine->get_error_message()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB\wpsqlitedb->query('...')
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions('...', 25, NULL, '', '')
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, '...')
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('...')
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array('...', Array)
+</pre>. in /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim()
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim()
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch()
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run()
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action()
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array()
+#8 {main}
+  thrown in /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[22-Jun-2026 13:06:41 UTC] WordPress database error <div style="clear:both">&nbsp;</div><div class="queries" style="clear:both; margin_bottom:2px; border: red dotted thin;">Queries made or created this session were<br/>
+	<ol>
+		<li>Raw query:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:06:41' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2026-06-22 13:06:41', last_attempt_local='2026-06-22 13:06:41'</li>
+		<li>Rewritten:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:06:41' AND status='pending'</li>
+		<li>With Placeholders:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+		<li>Prepare:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+	</ol>
+</div><div style="clear:both; margin_bottom:2px; border: red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">Error occurred at line 1652 in Function prepare_query. <br/> Error message was: Problem preparing the PDO SQL Statement.  Error was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error </div><pre>#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/db.php(2754): WP_SQLite_DB\PDOEngine->get_error_message()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB\wpsqlitedb->query('...')
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions('...', 25, NULL, '', '')
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, '...')
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('...')
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array('...', Array)
+</pre> for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:06:41' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2026-06-22 13:06:41', last_attempt_local='2026-06-22 13:06:41' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB\wpsqlitedb->query, WP_SQLite_DB\wpsqlitedb->print_error
+[22-Jun-2026 13:06:41 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div><div class="queries" style="clear:both; margin_bottom:2px; border: red dotted thin;">Queries made or created this session were<br/>
+	<ol>
+		<li>Raw query:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:06:41' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2026-06-22 13:06:41', last_attempt_local='2026-06-22 13:06:41'</li>
+		<li>Rewritten:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2026-06-22 13:06:41' AND status='pending'</li>
+		<li>With Placeholders:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+		<li>Prepare:
+UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <=  :param_0  AND status= :param_1 </li>
+	</ol>
+</div><div style="clear:both; margin_bottom:2px; border: red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">Error occurred at line 1652 in Function prepare_query. <br/> Error message was: Problem preparing the PDO SQL Statement.  Error was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error </div><pre>#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/db.php(2754): WP_SQLite_DB\PDOEngine->get_error_message()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB\wpsqlitedb->query('...')
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions('...', 25, NULL, '', '')
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, '...')
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run('...')
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters('', Array)
+#8 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action(Array)
+#9 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array('...', Array)
+</pre>. in /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim()
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim()
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch()
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): ActionScheduler_QueueRunner->run()
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(570): WP_Hook->do_action()
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-cron.php(191): do_action_ref_array()
+#8 {main}
+  thrown in /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/packages/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[22-Jun-2026 13:06:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_value() on string in /mnt/freelancer-projects/40531567/wordpress/wp-content/themes/vktr-labs/functions.php:61
+Stack trace:
+#0 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): vktr_checkout_disclaimer_fields()
+#1 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()
+#2 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(522): WP_Hook->do_action()
+#3 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/templates/checkout/payment.php(21): do_action()
+#4 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/wc-core-functions.php(352): include('...')
+#5 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/wc-template-functions.php(2763): wc_get_template()
+#6 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): woocommerce_checkout_payment()
+#7 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()
+#8 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(522): WP_Hook->do_action()
+#9 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/templates/checkout/form-checkout.php(59): do_action()
+#10 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/wc-core-functions.php(352): include('...')
+#11 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(370): wc_get_template()
+#12 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(70): WC_Shortcode_Checkout::checkout()
+#13 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/class-wc-shortcodes.php(75): WC_Shortcode_Checkout::output()
+#14 /mnt/freelancer-projects/40531567/wordpress/wp-content/plugins/woocommerce/includes/class-wc-shortcodes.php(98): WC_Shortcodes::shortcode_wrapper()
+#15 /mnt/freelancer-projects/40531567/wordpress/wp-includes/shortcodes.php(434): WC_Shortcodes::checkout()
+#16 [internal function]: do_shortcode_tag()
+#17 /mnt/freelancer-projects/40531567/wordpress/wp-includes/shortcodes.php(273): preg_replace_callback()
+#18 /mnt/freelancer-projects/40531567/wordpress/wp-includes/class-wp-hook.php(341): do_shortcode()
+#19 /mnt/freelancer-projects/40531567/wordpress/wp-includes/plugin.php(205): WP_Hook->apply_filters()
+#20 /mnt/freelancer-projects/40531567/wordpress/wp-includes/post-template.php(256): apply_filters()
+#21 /mnt/freelancer-projects/40531567/wordpress/wp-content/themes/vktr-labs/page.php(11): the_content()
+#22 /mnt/freelancer-projects/40531567/wordpress/wp-includes/template-loader.php(132): include('...')
+#23 /mnt/freelancer-projects/40531567/wordpress/wp-blog-header.php(19): require_once('...')
+#24 /mnt/freelancer-projects/40531567/wordpress/index.php(17): require('...')
+#25 {main}
+  thrown in /mnt/freelancer-projects/40531567/wordpress/wp-content/themes/vktr-labs/functions.php on line 61

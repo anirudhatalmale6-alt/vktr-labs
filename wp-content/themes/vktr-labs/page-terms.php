@@ -38,7 +38,7 @@ get_header();
         <div class="terms-section" style="margin-bottom:48px;padding-top:48px;border-top:1px solid var(--border);">
             <h2 style="margin-bottom:16px;">Shipping &amp; Delivery</h2>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:16px;">
-                All orders are shipped at the buyer's risk. VKTR Labs offers free express shipping within Australia and flat-rate shipping to New Zealand ($16.95 AUD).
+                All orders are shipped at the buyer's risk. VKTR Labs offers free express shipping within Australia on orders over $100 AUD, and flat-rate shipping to New Zealand ($16.95 AUD).
             </p>
             <p style="color:var(--text-medium);line-height:1.9;margin-bottom:16px;">
                 Once an order has been dispatched, VKTR Labs is not liable for any delays, losses, or damage that may occur during transit. While we take every care in packaging and dispatching orders, delivery times are estimates only and are not guaranteed.

@@ -143,7 +143,7 @@ function vktr_body_classes($classes) {
 add_filter('body_class', 'vktr_body_classes');
 
 function vktr_wc_products_per_page() {
-    return 12;
+    return 20;
 }
 add_filter('loop_shop_per_page', 'vktr_wc_products_per_page');
 
@@ -174,10 +174,10 @@ function vktr_buy3_get1_free($cart) {
         }
     }
 
-    if ($count < 4) return;
+    if ($count < 3) return;
 
-    // Find how many free items (1 free per 4 items)
-    $free_count = floor($count / 4);
+    // Find how many free items (1 free per 3 items)
+    $free_count = floor($count / 3);
 
     // Collect all prices and sort ascending
     $price_map = [];

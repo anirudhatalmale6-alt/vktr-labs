@@ -84,7 +84,7 @@ get_header();
                 <div class="fade-in">
                     <h3 style="margin-bottom:12px;font-size:1.4rem;">Reliable Service</h3>
                     <p style="color:var(--text-medium);line-height:1.8;font-size:0.95rem;">
-                        We are focused on building long-term trust through professional, responsive service. Free express shipping Australia-wide and clear communication at every step.
+                        We are focused on building long-term trust through professional, responsive service. Free express shipping on orders over $100 Australia-wide and clear communication at every step.
                     </p>
                 </div>
                 <div class="fade-in">

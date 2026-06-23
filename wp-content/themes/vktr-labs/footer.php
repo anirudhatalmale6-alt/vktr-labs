@@ -25,7 +25,7 @@
             <div class="footer-col">
                 <h4>Shipping</h4>
                 <ul>
-                    <li><a href="#">Free Express — Australia</a></li>
+                    <li><a href="#">Free Express Over $100 — AU</a></li>
                     <li><a href="#">$16.95 Flat Rate — NZ</a></li>
                 </ul>
             </div>
