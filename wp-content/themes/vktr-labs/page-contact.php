@@ -26,10 +26,6 @@ get_header();
                     <span class="label">Shipping</span>
                     <span>Free Express Australia-wide</span>
                 </div>
-                <div class="contact-detail">
-                    <span class="label">NZ Shipping</span>
-                    <span>$16.95 flat rate</span>
-                </div>
             </div>
 
             <div class="research-disclaimer-box" style="margin-top:32px;">

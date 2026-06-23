@@ -30,7 +30,7 @@ get_header();
                 <span class="icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>We offer free express shipping Australia-wide on orders over $100. For orders under $100, express shipping is $13 AUD. For New Zealand orders, we offer a flat-rate shipping fee of $16.95 AUD.</p>
+                <p>We offer free express shipping Australia-wide on orders over $100. For orders under $100, express shipping is $13 AUD.</p>
             </div>
         </div>
 
@@ -40,7 +40,7 @@ get_header();
                 <span class="icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>We currently accept bank transfer (direct deposit) as our payment method. Full banking details will be provided at checkout and in your order confirmation email.</p>
+                <p>We currently accept PayID as our payment method. PayID details will be provided at checkout and in your order confirmation email.</p>
             </div>
         </div>
 
@@ -70,7 +70,7 @@ get_header();
                 <span class="icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>Australian orders are shipped via express post and typically arrive within 1-3 business days. New Zealand orders generally take 5-10 business days depending on customs processing times.</p>
+                <p>Australian orders are shipped via express post and typically arrive within 1-3 business days.</p>
             </div>
         </div>
 

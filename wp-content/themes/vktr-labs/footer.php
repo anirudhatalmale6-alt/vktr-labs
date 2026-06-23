@@ -26,7 +26,7 @@
                 <h4>Shipping</h4>
                 <ul>
                     <li><a href="#">Free Express Over $100 — AU</a></li>
-                    <li><a href="#">$16.95 Flat Rate — NZ</a></li>
+                    <li><a href="#">$13 Flat Rate Under $100 — AU</a></li>
                 </ul>
             </div>
         </div>

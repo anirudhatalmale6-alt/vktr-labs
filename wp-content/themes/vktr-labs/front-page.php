@@ -140,7 +140,7 @@ if (!empty($featured_products)):
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                 <h4>Australia-Wide Express</h4>
-                <p>Free express shipping on orders over $100 across Australia. $16.95 flat rate to NZ.</p>
+                <p>Free express shipping on orders over $100 across Australia.</p>
             </div>
             <div class="why-choose-item fade-in">
                 <svg class="wci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
