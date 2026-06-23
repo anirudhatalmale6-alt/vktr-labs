@@ -233,3 +233,233 @@ function vktr_coming_soon_price_html($price, $product) {
     return $price;
 }
 add_filter('woocommerce_get_price_html', 'vktr_coming_soon_price_html', 10, 2);
+
+function vktr_product_specs() {
+    $specs = [
+        'retatrutide-20mg' => [
+            'name' => 'Retatrutide',
+            'cas' => '2381089-83-2',
+            'molecular_formula' => 'C₂₂₅H₃₄₈N₄₈O₆₈',
+            'molecular_weight' => '4813.45 g/mol',
+            'purity' => '>99%',
+            'form' => 'Lyophilised Powder',
+            'appearance' => 'White to off-white powder',
+            'dosage' => '20mg per vial',
+            'storage' => 'Store at -20°C. After reconstitution, store at 2-8°C and use within 30 days.',
+            'description' => 'Retatrutide (LY-3437943) is a novel triple agonist peptide targeting GLP-1, GIP, and glucagon receptors. It is one of the most studied research compounds in the field of metabolic regulation.',
+        ],
+        'mt1-10mg' => [
+            'name' => 'Melanotan I (MT1)',
+            'cas' => '75921-69-6',
+            'molecular_formula' => 'C₇₈H₁₁₁N₂₁O₁₉',
+            'molecular_weight' => '1646.85 g/mol',
+            'purity' => '>99%',
+            'form' => 'Lyophilised Powder',
+            'appearance' => 'White to off-white powder',
+            'dosage' => '10mg per vial',
+            'storage' => 'Store at -20°C. After reconstitution, store at 2-8°C and use within 30 days.',
+            'description' => 'Melanotan I (Afamelanotide) is a synthetic analogue of alpha-melanocyte stimulating hormone (α-MSH). It is widely studied for its role in melanogenesis and photoprotection research.',
+        ],
+        'ghk-cu-100mg' => [
+            'name' => 'GHK-Cu (Copper Peptide)',
+            'cas' => '49557-75-7',
+            'molecular_formula' => 'C₁₄H₂₃CuN₆O₄',
+            'molecular_weight' => '403.92 g/mol',
+            'purity' => '>99%',
+            'form' => 'Lyophilised Powder',
+            'appearance' => 'Blue/purple powder',
+            'dosage' => '100mg per vial',
+            'storage' => 'Store at -20°C. After reconstitution, store at 2-8°C and use within 30 days.',
+            'description' => 'GHK-Cu is a naturally occurring copper complex of the tripeptide glycyl-L-histidyl-L-lysine. It is extensively researched for its potential roles in tissue remodelling, wound healing, and cellular signalling.',
+        ],
+        'selank-10mg' => [
+            'name' => 'Selank',
+            'cas' => '129954-34-3',
+            'molecular_formula' => 'C₃₃H₅₇N₁₁O₉',
+            'molecular_weight' => '751.87 g/mol',
+            'purity' => '>99%',
+            'form' => 'Lyophilised Powder',
+            'appearance' => 'White to off-white powder',
+            'dosage' => '10mg per vial',
+            'storage' => 'Store at -20°C. After reconstitution, store at 2-8°C and use within 30 days.',
+            'description' => 'Selank is a synthetic analogue of the immunomodulatory peptide tuftsin. It is studied for its potential anxiolytic and nootropic properties in research settings.',
+        ],
+        'semax-10mg' => [
+            'name' => 'Semax',
+            'cas' => '80714-61-0',
+            'molecular_formula' => 'C₃₇H₅₁N₉O₁₀',
+            'molecular_weight' => '813.86 g/mol',
+            'purity' => '>99%',
+            'form' => 'Lyophilised Powder',
+            'appearance' => 'White to off-white powder',
+            'dosage' => '10mg per vial',
+            'storage' => 'Store at -20°C. After reconstitution, store at 2-8°C and use within 30 days.',
+            'description' => 'Semax is a synthetic peptide derived from adrenocorticotropic hormone (ACTH). It is researched for its neuroprotective and cognitive-enhancing properties.',
+        ],
+        'bac-water-10ml' => [
+            'name' => 'Bacteriostatic Water',
+            'molecular_formula' => 'H₂O + 0.9% Benzyl Alcohol',
+            'molecular_weight' => 'N/A',
+            'purity' => 'USP Grade',
+            'form' => 'Sterile Liquid',
+            'appearance' => 'Clear, colourless liquid',
+            'dosage' => '10ml per vial',
+            'storage' => 'Store at room temperature (15-25°C). Once opened, use within 28 days.',
+            'description' => 'Bacteriostatic Water (BAC Water) is sterile water containing 0.9% benzyl alcohol as a bacteriostatic preservative. It is used as a diluent for reconstituting lyophilised research compounds.',
+        ],
+    ];
+    return $specs;
+}
+
+function vktr_custom_product_tabs($tabs) {
+    global $product;
+    if (!$product) return $tabs;
+
+    $slug = $product->get_slug();
+    $specs = vktr_product_specs();
+
+    if (isset($tabs['description'])) {
+        $tabs['description']['priority'] = 10;
+    }
+
+    $matched_slug = null;
+    foreach ($specs as $key => $data) {
+        if (strpos($slug, $key) !== false || $slug === $key) {
+            $matched_slug = $key;
+            break;
+        }
+    }
+
+    if ($matched_slug) {
+        $tabs['specifications'] = [
+            'title'    => 'Product Specifications',
+            'priority' => 20,
+            'callback' => 'vktr_specifications_tab_content',
+        ];
+    }
+
+    $tabs['coa'] = [
+        'title'    => 'Certificate of Analysis',
+        'priority' => 30,
+        'callback' => 'vktr_coa_tab_content',
+    ];
+
+    $tabs['storage'] = [
+        'title'    => 'Storage &amp; Handling',
+        'priority' => 40,
+        'callback' => 'vktr_storage_tab_content',
+    ];
+
+    if (isset($tabs['reviews'])) {
+        $tabs['reviews']['priority'] = 50;
+    }
+
+    if (isset($tabs['additional_information'])) {
+        unset($tabs['additional_information']);
+    }
+
+    return $tabs;
+}
+add_filter('woocommerce_product_tabs', 'vktr_custom_product_tabs');
+
+function vktr_get_product_spec_data() {
+    global $product;
+    $slug = $product->get_slug();
+    $specs = vktr_product_specs();
+    foreach ($specs as $key => $data) {
+        if (strpos($slug, $key) !== false || $slug === $key) {
+            return $data;
+        }
+    }
+    return null;
+}
+
+function vktr_specifications_tab_content() {
+    $data = vktr_get_product_spec_data();
+    if (!$data) return;
+
+    echo '<div class="vktr-specs-table">';
+    echo '<h2>Product Specifications</h2>';
+    echo '<table>';
+    if (!empty($data['name'])) echo '<tr><th>Compound</th><td>' . esc_html($data['name']) . '</td></tr>';
+    if (!empty($data['cas'])) echo '<tr><th>CAS Number</th><td>' . esc_html($data['cas']) . '</td></tr>';
+    if (!empty($data['molecular_formula'])) echo '<tr><th>Molecular Formula</th><td>' . $data['molecular_formula'] . '</td></tr>';
+    if (!empty($data['molecular_weight'])) echo '<tr><th>Molecular Weight</th><td>' . esc_html($data['molecular_weight']) . '</td></tr>';
+    if (!empty($data['purity'])) echo '<tr><th>Purity</th><td>' . esc_html($data['purity']) . '</td></tr>';
+    if (!empty($data['form'])) echo '<tr><th>Physical Form</th><td>' . esc_html($data['form']) . '</td></tr>';
+    if (!empty($data['appearance'])) echo '<tr><th>Appearance</th><td>' . esc_html($data['appearance']) . '</td></tr>';
+    if (!empty($data['dosage'])) echo '<tr><th>Quantity</th><td>' . esc_html($data['dosage']) . '</td></tr>';
+    echo '</table>';
+    echo '</div>';
+}
+
+function vktr_coa_tab_content() {
+    global $product;
+    $coa_url = get_post_meta($product->get_id(), '_vktr_coa_url', true);
+
+    echo '<div class="vktr-coa-section">';
+    echo '<h2>Certificate of Analysis</h2>';
+
+    if ($coa_url) {
+        echo '<p>A Certificate of Analysis (COA) is available for this product, confirming third-party testing results for purity and quality.</p>';
+        echo '<a href="' . esc_url($coa_url) . '" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;">Download COA (PDF)</a>';
+    } else {
+        echo '<div class="vktr-coa-info">';
+        echo '<div class="vktr-coa-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>';
+        echo '<p>All VKTR Labs products are third-party tested where applicable. Certificates of Analysis (COAs) verify the purity, identity, and quality of each batch.</p>';
+        echo '<p style="margin-top:12px;color:var(--text-light);font-size:0.9rem;">COA documentation for this product will be available shortly. For immediate requests, please <a href="' . esc_url(home_url('/contact/')) . '" style="color:var(--sand-dark);text-decoration:underline;">contact us</a>.</p>';
+        echo '</div>';
+    }
+    echo '</div>';
+}
+
+function vktr_storage_tab_content() {
+    $data = vktr_get_product_spec_data();
+
+    echo '<div class="vktr-storage-section">';
+    echo '<h2>Storage &amp; Handling</h2>';
+
+    if ($data && !empty($data['storage'])) {
+        echo '<p>' . esc_html($data['storage']) . '</p>';
+    } else {
+        echo '<p>Store in a cool, dry place away from direct sunlight. Refer to product label for specific storage requirements.</p>';
+    }
+
+    echo '<div class="vktr-storage-grid">';
+    echo '<div class="vktr-storage-item">';
+    echo '<strong>Before Reconstitution</strong>';
+    echo '<p>Store lyophilised powder at -20&deg;C for long-term storage, or 2-8&deg;C for short-term storage (up to 90 days).</p>';
+    echo '</div>';
+    echo '<div class="vktr-storage-item">';
+    echo '<strong>After Reconstitution</strong>';
+    echo '<p>Store reconstituted solution at 2-8&deg;C (refrigerated). Use within 30 days of reconstitution.</p>';
+    echo '</div>';
+    echo '<div class="vktr-storage-item">';
+    echo '<strong>Handling</strong>';
+    echo '<p>Handle with appropriate laboratory safety equipment. Avoid repeated freeze-thaw cycles. Keep vial sealed until ready for use.</p>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+}
+
+function vktr_enhanced_product_description() {
+    global $product;
+    $data = vktr_get_product_spec_data();
+
+    if ($data && !empty($data['description'])) {
+        echo '<div class="vktr-product-description">';
+        echo '<h2>Description</h2>';
+        echo '<p>' . esc_html($data['description']) . '</p>';
+        echo '</div>';
+    } else {
+        the_content();
+    }
+}
+
+function vktr_override_description_tab($tabs) {
+    if (isset($tabs['description'])) {
+        $tabs['description']['callback'] = 'vktr_enhanced_product_description';
+    }
+    return $tabs;
+}
+add_filter('woocommerce_product_tabs', 'vktr_override_description_tab', 20);

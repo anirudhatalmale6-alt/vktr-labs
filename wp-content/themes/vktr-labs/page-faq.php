@@ -30,7 +30,7 @@ get_header();
                 <span class="icon">+</span>
             </button>
             <div class="faq-answer">
-                <p>We offer free express shipping Australia-wide on orders over $100. For orders under $100, express shipping is available at a flat rate. For New Zealand orders, we offer a flat-rate shipping fee of $16.95 AUD.</p>
+                <p>We offer free express shipping Australia-wide on orders over $100. For orders under $100, express shipping is $13 AUD. For New Zealand orders, we offer a flat-rate shipping fee of $16.95 AUD.</p>
             </div>
         </div>
 
