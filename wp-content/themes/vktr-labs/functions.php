@@ -394,22 +394,13 @@ function vktr_specifications_tab_content() {
 }
 
 function vktr_coa_tab_content() {
-    global $product;
-    $coa_url = get_post_meta($product->get_id(), '_vktr_coa_url', true);
-
     echo '<div class="vktr-coa-section">';
     echo '<h2>Certificate of Analysis</h2>';
-
-    if ($coa_url) {
-        echo '<p>A Certificate of Analysis (COA) is available for this product, confirming third-party testing results for purity and quality.</p>';
-        echo '<a href="' . esc_url($coa_url) . '" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;">Download COA (PDF)</a>';
-    } else {
-        echo '<div class="vktr-coa-info">';
-        echo '<div class="vktr-coa-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>';
-        echo '<p>All VKTR Labs products are third-party tested where applicable. Certificates of Analysis (COAs) verify the purity, identity, and quality of each batch.</p>';
-        echo '<p style="margin-top:12px;color:var(--text-light);font-size:0.9rem;">COA documentation for this product will be available shortly. For immediate requests, please <a href="' . esc_url(home_url('/contact/')) . '" style="color:var(--sand-dark);text-decoration:underline;">contact us</a>.</p>';
-        echo '</div>';
-    }
+    echo '<div class="vktr-coa-info">';
+    echo '<div class="vktr-coa-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>';
+    echo '<p>All VKTR Labs products are third-party tested for purity, identity, and quality. Certificates of Analysis (COAs) are available upon request.</p>';
+    echo '<p style="margin-top:12px;color:var(--text-light);font-size:0.9rem;">If you would like to view the COA for this product, please get in touch via WhatsApp or email and we will be happy to provide it.</p>';
+    echo '</div>';
     echo '</div>';
 }
 
