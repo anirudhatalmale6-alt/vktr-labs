@@ -19,6 +19,14 @@ get_header();
 
             <div style="margin-top:32px;">
                 <div class="contact-detail">
+                    <span class="label">Email</span>
+                    <span><a href="mailto:vktrlabs@gmail.com" style="color:var(--sand);text-decoration:none;">vktrlabs@gmail.com</a></span>
+                </div>
+                <div class="contact-detail">
+                    <span class="label">WhatsApp</span>
+                    <span><a href="https://wa.me/61488761006" target="_blank" rel="noopener" style="color:var(--sand);text-decoration:none;">+61 488 761 006</a></span>
+                </div>
+                <div class="contact-detail">
                     <span class="label">Response</span>
                     <span>Within 24 hours</span>
                 </div>
