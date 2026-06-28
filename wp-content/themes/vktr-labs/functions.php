@@ -325,22 +325,6 @@ function vktr_custom_product_tabs($tabs) {
         $tabs['description']['priority'] = 10;
     }
 
-    $matched_slug = null;
-    foreach ($specs as $key => $data) {
-        if (strpos($slug, $key) !== false || $slug === $key) {
-            $matched_slug = $key;
-            break;
-        }
-    }
-
-    if ($matched_slug) {
-        $tabs['specifications'] = [
-            'title'    => 'Product Specifications',
-            'priority' => 20,
-            'callback' => 'vktr_specifications_tab_content',
-        ];
-    }
-
     $tabs['coa'] = [
         'title'    => 'Certificate of Analysis',
         'priority' => 30,
@@ -457,6 +441,7 @@ function vktr_enhanced_product_description() {
     } else {
         the_content();
     }
+    echo '<p style="margin-top:24px;font-size:0.82rem;color:var(--text-light);font-style:italic;">Product images are for illustrative purposes only. Actual product appearance, packaging, labels, and lyophilized powder may vary.</p>';
 }
 
 function vktr_override_description_tab($tabs) {
