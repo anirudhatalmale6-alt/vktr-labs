@@ -207,32 +207,35 @@ function vktr_b3g1_cart_item_name($name, $cart_item, $cart_item_key) {
 }
 add_filter('woocommerce_cart_item_name', 'vktr_b3g1_cart_item_name', 10, 3);
 
-// Coming Soon badge for products with $0 price
+// Coming Soon badge for out-of-stock products
 function vktr_coming_soon_badge() {
     global $product;
-    if ($product && (float) $product->get_price() === 0.0) {
+    if ($product && !$product->is_in_stock()) {
         echo '<span class="product-card-badge coming-soon-badge">Coming Soon</span>';
     }
 }
 add_action('woocommerce_before_shop_loop_item_title', 'vktr_coming_soon_badge', 15);
 
-// Hide Add to Cart for Coming Soon ($0) products
-function vktr_hide_add_to_cart_for_coming_soon($purchasable, $product) {
-    if ((float) $product->get_price() === 0.0) {
-        return false;
-    }
-    return $purchasable;
-}
-add_filter('woocommerce_is_purchasable', 'vktr_hide_add_to_cart_for_coming_soon', 10, 2);
-
-// Show "Coming Soon" instead of price for $0 products
+// Show price with "Coming Soon" label for out-of-stock products
 function vktr_coming_soon_price_html($price, $product) {
-    if ((float) $product->get_price() === 0.0) {
+    if (!$product->is_in_stock() && (float) $product->get_price() > 0) {
+        return $price . ' <span class="coming-soon-text">&mdash; Coming Soon</span>';
+    }
+    if (!$product->is_in_stock() && (float) $product->get_price() === 0.0) {
         return '<span class="coming-soon-text">Coming Soon</span>';
     }
     return $price;
 }
 add_filter('woocommerce_get_price_html', 'vktr_coming_soon_price_html', 10, 2);
+
+function vktr_coming_soon_availability($availability, $product) {
+    if (!$product->is_in_stock()) {
+        $availability['availability'] = 'Coming Soon';
+        $availability['class'] = 'coming-soon';
+    }
+    return $availability;
+}
+add_filter('woocommerce_get_availability', 'vktr_coming_soon_availability', 10, 2);
 
 function vktr_product_specs() {
     $specs = [

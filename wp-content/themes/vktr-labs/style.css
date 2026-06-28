@@ -1054,6 +1054,16 @@ h4 { font-size: 1.3rem; }
     padding: 0 16px 12px;
 }
 
+.woocommerce-variation-availability .stock.coming-soon,
+.woocommerce div.product p.stock.coming-soon {
+    color: var(--sand-dark);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
 /* B3G1 promo banner */
 .promo-banner {
     background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);

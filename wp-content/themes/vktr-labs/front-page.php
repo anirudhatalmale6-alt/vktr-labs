@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="promo-banner">
-    <p><strong>Buy 3, Get 1 Free</strong> &mdash; Applied automatically at checkout</p>
+    <p><strong>Buy 3, Get 1 Free</strong> &mdash; Applied automatically at checkout &nbsp;|&nbsp; <strong>Free Starter Kit</strong> with your first order</p>
 </div>
 
 <section class="hero">
@@ -52,9 +52,9 @@
 <?php
 $featured_products = wc_get_products([
     'status'   => 'publish',
-    'limit'    => 6,
-    'orderby'  => 'date',
-    'order'    => 'DESC',
+    'limit'    => -1,
+    'orderby'  => 'menu_order',
+    'order'    => 'ASC',
 ]);
 
 if (!empty($featured_products)):
@@ -79,8 +79,8 @@ if (!empty($featured_products)):
                         } else {
                             echo '<div class="product-placeholder">VKTR Labs</div>';
                         }
-                        $price = (float) $product->get_price();
-                        if ($price === 0.0) {
+                        $in_stock = $product->is_in_stock();
+                        if (!$in_stock) {
                             echo '<span class="product-card-badge coming-soon-badge">Coming Soon</span>';
                         }
                         ?>
@@ -88,11 +88,16 @@ if (!empty($featured_products)):
                     <div class="product-card-info">
                         <h3><?php echo esc_html($product->get_name()); ?></h3>
                         <p class="product-subtitle"><?php echo wp_trim_words($product->get_short_description(), 10); ?></p>
-                        <?php if ($price > 0): ?>
+                        <?php if ($in_stock): ?>
                             <div class="product-card-price">
                                 <span class="currency">$</span><?php echo esc_html($product->get_price()); ?>
                             </div>
                             <span class="btn btn-dark">View Product</span>
+                        <?php elseif ((float) $product->get_price() > 0): ?>
+                            <div class="product-card-price">
+                                <span class="currency">$</span><?php echo esc_html($product->get_price()); ?> <span class="coming-soon-text">&mdash; Coming Soon</span>
+                            </div>
+                            <span class="btn btn-dark">View Details</span>
                         <?php else: ?>
                             <div class="product-card-price coming-soon-text">Coming Soon</div>
                             <span class="btn btn-dark">View Details</span>
