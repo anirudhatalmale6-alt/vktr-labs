@@ -1064,6 +1064,26 @@ h4 { font-size: 1.3rem; }
     font-weight: 500;
 }
 
+.vktr-coa-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.vktr-coa-btn {
+    display: inline-flex !important;
+    align-items: center;
+    padding: 12px 24px !important;
+    font-size: 0.85rem !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 480px) {
+    .vktr-coa-buttons { flex-direction: column; }
+    .vktr-coa-btn { width: 100%; justify-content: center; }
+}
+
 /* B3G1 promo banner */
 .promo-banner {
     background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
